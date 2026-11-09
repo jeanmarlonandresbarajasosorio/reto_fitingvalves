@@ -1,0 +1,317 @@
+/* valvulasModal.css */
+
+.valvula-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeInModal 0.25s ease-in-out;
+  overflow-y: auto;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.valvula-modal-content {
+  background: #ffffff;
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 8px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  padding: 45px 40px;
+  box-sizing: border-box;
+}
+
+.valvula-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f4f4f4;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #1b2533;
+  transition: background 0.2s, color 0.2s;
+}
+
+.valvula-modal-close:hover {
+  background: #ffc700;
+  color: #000;
+}
+
+.valvula-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 200px;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Efecto Zoom */
+.valvula-zoom-container {
+  width: 100%;
+  height: 340px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-in;
+  border-radius: 6px;
+}
+
+.valvula-zoom-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.1s ease-out;
+}
+
+/* Información central */
+.valvula-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.valvula-brand-header {
+  margin-bottom: 12px;
+}
+
+.valvula-logo-img {
+  max-height: 45px;
+  width: auto;
+  object-fit: contain;
+}
+
+.valvula-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: #1b2533;
+  margin-bottom: 15px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.valvula-desc {
+  font-size: 13.5px;
+  color: #444444;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Menú lateral derecho de modelos */
+.valvula-sidebar {
+  border-left: 1px solid #eeeeee;
+  padding-left: 20px;
+}
+
+.valvula-models-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.valvula-models-list li a {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 800;
+  color: #1b2533;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.valvula-models-list li a:hover {
+  color: #d4a017;
+}
+
+.arrow-icon {
+  color: #ffc700;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+  .valvula-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .valvula-sidebar {
+    border-left: none;
+    border-top: 1px solid #eeeeee;
+    padding-left: 0;
+    padding-top: 15px;
+  }
+
+  .valvula-zoom-container {
+    height: 250px;
+  }
+
+  .valvula-modal-content {
+    padding: 30px 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+/* Estilos para el botón de cotización express en el modal */
+.btn-cotizar-express {
+  margin-top: 15px;
+  background-color: #ffc700;
+  color: #1b2533;
+  border: none;
+  padding: 10px 18px;
+  font-weight: 800;
+  font-size: 13.5px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-cotizar-express:hover {
+  background-color: #e6b400;
+  transform: translateY(-1px);
+}
+
+/* Contenedor del formulario express */
+.cotizar-express-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+.cotizar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 10px;
+}
+
+.cotizar-header h2 {
+  font-size: 22px;
+  font-weight: 900;
+  color: #1b2533;
+  margin: 0;
+}
+
+.cotizar-form-express {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #ffc700;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.cotizar-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-cancelar {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  padding: 10px 16px;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-enviar {
+  background-color: #1b2533;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-enviar:hover {
+  background-color: #ffc700;
+  color: #000;
+}
+
+.cotizar-exito {
+  text-align: center;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.cotizar-exito h3 {
+  color: #2e7d32;
+  font-size: 22px;
+  margin: 0;
+}
+
+.btn-volver {
+  margin-top: 15px;
+  background-color: #1b2533;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+}

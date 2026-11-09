@@ -1,0 +1,94 @@
+
+.quien-somos-container {
+  width: 100%;
+  padding: 60px 20px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.quien-somos-main {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.quien-somos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.quien-somos-img-wrapper {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.quien-somos-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.quien-somos-img:hover {
+  transform: scale(1.02);
+}
+
+.quien-somos-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.title-bar {
+  width: 4px;
+  height: 28px;
+  background-color: #ffc700; 
+  display: inline-block;
+}
+
+.section-title-wrapper h2 {
+  font-size: 28px;
+  font-weight: 900;
+  color: #1b2533;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.quien-somos-subtitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #777777;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.quien-somos-desc {
+  font-size: 14.5px;
+  color: #444444;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 992px) {
+  .quien-somos-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .quien-somos-container {
+    padding: 30px 15px;
+  }
+}

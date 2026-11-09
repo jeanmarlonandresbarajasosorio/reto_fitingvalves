@@ -1,0 +1,174 @@
+/* bombasderetornocondensadoModal.css */
+
+.bomba-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeInModal 0.25s ease-in-out;
+  overflow-y: auto;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.bomba-modal-content {
+  background: #ffffff;
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 8px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  padding: 45px 40px;
+  box-sizing: border-box;
+}
+
+.bomba-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f4f4f4;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #1b2533;
+  transition: background 0.2s, color 0.2s;
+}
+
+.bomba-modal-close:hover {
+  background: #ffc700;
+  color: #000;
+}
+
+.bomba-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 180px;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Efecto Zoom */
+.bomba-zoom-container {
+  width: 100%;
+  height: 340px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-in;
+  border-radius: 6px;
+}
+
+.bomba-zoom-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.1s ease-out;
+}
+
+/* Información central */
+.bomba-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.bomba-brand-header {
+  margin-bottom: 12px;
+}
+
+.bomba-logo-img {
+  max-height: 45px;
+  width: auto;
+  object-fit: contain;
+}
+
+.bomba-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: #1b2533;
+  margin-bottom: 15px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.bomba-desc {
+  font-size: 13.5px;
+  color: #444444;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Menú lateral derecho de modelos */
+.bomba-sidebar {
+  border-left: 1px solid #eeeeee;
+  padding-left: 20px;
+}
+
+.bomba-models-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bomba-models-list li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 800;
+  color: #1b2533;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.bomba-models-list li a:hover {
+  color: #d4a017;
+}
+
+.plus-icon {
+  color: #ffc700;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+  .bomba-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .bomba-sidebar {
+    border-left: none;
+    border-top: 1px solid #eeeeee;
+    padding-left: 0;
+    padding-top: 15px;
+  }
+
+  .bomba-zoom-container {
+    height: 250px;
+  }
+
+  .bomba-modal-content {
+    padding: 30px 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
