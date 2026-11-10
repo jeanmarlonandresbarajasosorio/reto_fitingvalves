@@ -3,7 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import cotizacionRoutes from "./controllers/cotizacionController.js";
-
+import talentosRouter from "./controllers/talentosController.js";
+import contactoRoutes from "./controllers/contactoController.js";
 dotenv.config();
 
 const app = express();
@@ -31,6 +32,8 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/", cotizacionRoutes);
+app.use(talentosRouter);
+app.use(contactoRoutes); 
 
 const PORT = process.env.PORT || 5000;
 

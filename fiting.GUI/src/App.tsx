@@ -17,6 +17,9 @@ import api from "./services/api";
 import MenuSistemasDeVaporPage from "./pages/menusistemasdevapor/MenuSistemasDeVaporPage";
 import MenuMezcladorAguaVaporPage from "./pages/menumezcladoraguavapor/MenuMezcladorAguaVaporPage";
 import QuienSomospage from "./pages/quiensomos/quiensomosPage";
+import BancodeTalentosPage from "./pages/bancodetalentos/BancodeTalentosPage";
+import ContactoPage from "./pages/contacto/ContactoPage";
+import NoticiasPages from "./pages/noticias/NoticiasPages";
 
 import "./App.css";
 
@@ -28,12 +31,13 @@ function App() {
   const [termino, setTermino] = useState("");
   const [submenuProductosVisible, setSubmenuProductosVisible] = useState(false);
   
-  const [vistaActual, setVistaActual] = useState<"home" | "sistemas-vapor" | "mezclador-agua-vapor" | "quien-somos">("home");
+  const [vistaActual, setVistaActual] = useState<"home" | "sistemas-vapor" | "mezclador-agua-vapor" | "quien-somos" | "trabaje-con-nosotros" | "contacto" | "noticias">("home");
 
   const [representacionesIndex, setRepresentacionesIndex] = useState(0);
   const [nuestrosClientesIndex, setNuestrosClientesIndex] = useState(0);
   const [heroIndex, setHeroIndex] = useState(0);
   const [emailCotizacion, setEmailCotizacion] = useState("");
+  const [enviandoCotizacionFooter, setEnviandoCotizacionFooter] = useState(false);
 
   const heroBanners = [
     { img: "/img/principal1.png" },
@@ -148,16 +152,41 @@ function App() {
     { nombre: "INICIO", href: "#inicio", accion: () => { setVistaActual("home"); } },
     { nombre: "QUIÉNES SOMOS", href: "#nosotros", accion: () => { setVistaActual("quien-somos"); } },
     { nombre: "PRODUCTOS", href: "#productos", esDropdown: true },
-    { nombre: "TRABAJE CON NOSOTROS", href: "#trabaje", accion: () => { setVistaActual("home"); } },
-    { nombre: "CONTACTO", href: "#contacto", accion: () => { setVistaActual("home"); } },
-    { nombre: "NOTICIAS", href: "#noticias", accion: () => { setVistaActual("home"); } },
+    { nombre: "TRABAJE CON NOSOTROS", href: "#trabaje", accion: () => { setVistaActual("trabaje-con-nosotros"); } },
+    { nombre: "CONTACTO", href: "#contacto", accion: () => { setVistaActual("contacto"); } },
+    { nombre: "NOTICIAS", href: "#noticias", accion: () => { setVistaActual("noticias"); } },
   ];
 
-  const handleCotizacion = (e: React.FormEvent) => {
+  const handleCotizacion = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (emailCotizacion.trim()) {
-      alert(`Gracias. Recibimos tu solicitud de cotización para: ${emailCotizacion}`);
-      setEmailCotizacion("");
+    if (!emailCotizacion.trim()) return;
+
+    setEnviandoCotizacionFooter(true);
+    try {
+      const response = await fetch("http://localhost:5000/api/cotizar-express", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          producto: "COTIZACIÓN GENERAL - Web Principal",
+          modelo: "General",
+          cantidad: 1,
+          especificaciones: "Solicitud desde sección inferior de la página principal",
+          correoCliente: emailCotizacion,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert(`¡Cotización generada con éxito! Código de referencia: ${data.codigoReferencia || "COT-EXPRESS"}. Hemos enviado los detalles a tu correo.`);
+        setEmailCotizacion("");
+      } else {
+        alert(data.error || "Ocurrió un error al enviar la cotización.");
+      }
+    } catch (error) {
+      console.error("Error de red:", error);
+      alert("No se pudo conectar con el servidor de cotizaciones.");
+    } finally {
+      setEnviandoCotizacionFooter(false);
     }
   };
 
@@ -306,6 +335,12 @@ function App() {
           <MenuMezcladorAguaVaporPage />
         ) : vistaActual === "quien-somos" ? (
           <QuienSomospage />
+        ) : vistaActual === "trabaje-con-nosotros" ? (
+          <BancodeTalentosPage />
+        ) : vistaActual === "contacto" ? (
+          <ContactoPage />
+        ) : vistaActual === "noticias" ? (
+          <NoticiasPages />
         ) : (
           <>
             <section className="hero-section">
@@ -317,7 +352,12 @@ function App() {
                   <div
                     key={idx}
                     className="hero-slide"
-                    style={{ backgroundImage: `url(${banner.img})` }}
+                    style={{ 
+                      backgroundImage: `url(${banner.img})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat"
+                    }}
                   ></div>
                 ))}
               </div>
@@ -509,7 +549,9 @@ function App() {
                 onChange={(e) => setEmailCotizacion(e.target.value)}
                 required
               />
-              <button type="submit">ENVIAR</button>
+              <button type="submit" disabled={enviandoCotizacionFooter}>
+                {enviandoCotizacionFooter ? "ENVIANDO..." : "ENVIAR"}
+              </button>
             </form>
           </div>
         </div>

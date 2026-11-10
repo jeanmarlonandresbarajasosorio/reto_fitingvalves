@@ -1,0 +1,143 @@
+.talentos-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.talentos-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 750px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 45px 50px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.talentos-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: #1b2533;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+  text-transform: capitalize;
+}
+
+.talentos-subtitle {
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.talentos-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.talentos-form input[type="text"],
+.talentos-form input[type="tel"],
+.talentos-form input[type="email"],
+.talentos-form select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.talentos-form input:focus,
+.talentos-form select:focus {
+  border-color: #ffc700;
+}
+
+/* Selector de archivo estilizado */
+.file-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.file-input-wrapper input[type="file"] {
+  font-size: 13px;
+  color: #555;
+}
+
+.file-name-display {
+  font-size: 12px;
+  font-weight: bold;
+  color: #777;
+  text-transform: uppercase;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 13.5px;
+  color: #333;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.btn-enviar-talento {
+  margin-top: 15px;
+  background-color: #8c939d;
+  color: #ffffff;
+  border: none;
+  padding: 12px 30px;
+  font-weight: 800;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.2s;
+}
+
+.btn-enviar-talento:hover {
+  background-color: #1b2533;
+}
+
+.talentos-exito {
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.talentos-exito h3 {
+  color: #2e7d32;
+  font-size: 24px;
+  margin: 0;
+}
+
+.btn-reiniciar {
+  background-color: #1b2533;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+}

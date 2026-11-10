@@ -81,7 +81,7 @@ router.post("/api/cotizar-express", async (req, res) => {
 
             <div style="text-align: center; margin-top: 25px;">
               <a href="mailto:${correoCliente}?subject=Cotización%20Ref:%20${codigoReferencia}%20-%20Fitting%20Valves" style="background-color: #1b2533; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; display: inline-block; box-shadow: 0 2px 4px rgba(0,0,0,0.15);">
-                ✉️ Responder directamente al Cliente
+                Responder directamente al Cliente
               </a>
             </div>
           </div>
